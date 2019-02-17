@@ -24,7 +24,7 @@ public class Painel extends JPanel {
     private int y;
     private int altura;
     private int largura;
-    private Retângulo[] formas = new Retângulo[100];
+    private Forma[] formas = new Forma[100];
     private int ultimoObj;
     private Color[] cores = {color.BLACK, color.BLUE};
     private int idCor;
