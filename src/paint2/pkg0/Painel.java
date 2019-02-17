@@ -26,6 +26,8 @@ public class Painel extends JPanel {
     private int largura;
     private Retângulo[] formas = new Retângulo[100];
     private int ultimoObj;
+    private Color[] cores = {color.BLACK, color.BLUE};
+    private int idCor;
     
     public Painel() {
         addMouseListener(new MouseAdapter() {
@@ -45,13 +47,17 @@ public class Painel extends JPanel {
                 altura = Math.abs(y - e.getY());
                 x = Math.min(x, e.getX());
                 y = Math.min(y, e.getY());
-                formas[ultimoObj] = new Retângulo(x, y, largura, altura);
+                formas[ultimoObj] = new Retângulo(x, y, cores[idCor], largura, altura);
                 ultimoObj += 1;
                 repaint();
             }
         });
     }
     
+    public void mudarCor(int i) {
+       idCor = i;
+    }
+
     public void removerForma(int x, int y) {
         Retângulo[] novasFormas = new Retângulo[100];
         for (int i=0; i < ultimoObj; i++)

@@ -15,8 +15,8 @@ public class Retângulo extends Forma {
     private int largura;
     private int altura;
     
-    public Retângulo(int x, int y, int largura, int altura) {
-        super(x, y);
+    public Retângulo(int x, int y, Color cor, int largura, int altura) {
+        super(x, y, cor);
         this.largura = largura;
         this.altura = altura;
     }
@@ -31,6 +31,7 @@ public class Retângulo extends Forma {
     
     @Override
     public void Desenhar(Graphics g) {
+        g.setBackground(cor);
         g.fillRect(x, y, largura, altura);
     }
 }
