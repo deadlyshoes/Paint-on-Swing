@@ -55,7 +55,7 @@ public class Painel extends JPanel {
     }
     
     public void mudarCor(int i) {
-       idCor = i;
+        idCor = i;
     }
 
     public void removerForma(int x, int y) {
