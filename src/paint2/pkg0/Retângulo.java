@@ -5,6 +5,7 @@
  */
 package paint2.pkg0;
 
+import java.awt.Color;
 import java.awt.Graphics;
 
 /**
@@ -31,7 +32,7 @@ public class Retângulo extends Forma {
     
     @Override
     public void Desenhar(Graphics g) {
-        g.setBackground(cor);
+        g.setColor(cor);
         g.fillRect(x, y, largura, altura);
     }
 }
