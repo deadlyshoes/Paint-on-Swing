@@ -10,6 +10,7 @@ package paint2.pkg0;
  * @author ilmar
  */
 
+import java.awt.Color;
 import java.awt.Graphics;
 
 public abstract class Forma {
