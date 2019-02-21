@@ -46,6 +46,13 @@ public class Painel extends JPanel {
                     for (int i = formas.size() - 1; i >= 0; i--) {
                         if (regiaoOcupada(formas.get(i), x, y)) {
                             idSelecionado = i;
+                            //Mover a forma selecionada para cima
+                            Forma tmp = formas.get(idSelecionado);
+                            formas.remove(idSelecionado);
+                            formas.add(tmp);
+                            idSelecionado = formas.size() - 1;
+                            repaint();
+                            //
                             break;
                         }
                     }
