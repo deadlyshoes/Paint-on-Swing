@@ -34,6 +34,7 @@ public class Painel extends JPanel {
     private int idCor;
     private int idTool = 1;
     private int idSelecionado = 0;
+    private Forma formaBackup;
     
     public Painel() {
         addMouseListener(new MouseAdapter() {
@@ -107,8 +108,14 @@ public class Painel extends JPanel {
     }
 
     public void removerForma() {
+        formaBackup = formas.get(idSelecionado);
         formas.remove(idSelecionado);
         idSelecionado --;
+        repaint();
+    }
+    
+    public void Desfazer() {
+        formas.add(formaBackup);
         repaint();
     }
     
