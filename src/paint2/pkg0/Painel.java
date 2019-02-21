@@ -32,13 +32,24 @@ public class Painel extends JPanel {
                              Color.MAGENTA, Color.ORANGE, Color.PINK,
                              Color.RED, Color.WHITE, Color.YELLOW};
     private int idCor;
+    private int idTool = 1;
+    private int idSelecionado = 0;
     
     public Painel() {
         addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
                 x = e.getX();
                 y = e.getY();
-                formas.add(new Retângulo(0, 0, null, 0, 0)); //Dummy
+                if (idTool == 1)
+                    formas.add(new Retangulo(0, 0, null, 0, 0)); //Dummy
+                else if (idTool == 2) { 
+                    for (int i = formas.size() - 1; i >= 0; i--) {
+                        if (regiaoOcupada(formas.get(i), x, y)) {
+                            idSelecionado = i;
+                            break;
+                        }
+                    }
+                }
             }
         });
         addMouseMotionListener(new MouseMotionAdapter() {
@@ -47,18 +58,31 @@ public class Painel extends JPanel {
                 int tmpY = Math.min(y, e.getY());
                 largura = Math.abs(x - e.getX());
                 altura = Math.abs(y - e.getY());
-                Retângulo formaNova = new Retângulo(tmpX, tmpY, cores[idCor], largura, altura);
-                /**switch (tipoForma) {
+                if (idTool == 1) {
+                    Retangulo formaNova = new Retangulo(
+                            tmpX, tmpY, cores[idCor], largura, altura);
+                    /**switch (tipoForma) {
                     case "Circunferência": formaNova = (Circunferência) formaNova;
                     case "Elipse": formaNova = (Elipse) formaNova;
                     case "Triângulo": formaNova = (Triângulo) formaNova;
-                } **/
-                formas.set(formas.size() - 1, formaNova);
+                    } **/
+                    formas.set(formas.size() - 1, formaNova);
+                }
+                else if (idTool == 2) {
+                    formas.get(idSelecionado).setX(
+                            formas.get(idSelecionado).getX() + (e.getX() - x));
+                    formas.get(idSelecionado).setY(
+                            formas.get(idSelecionado).getY() + (e.getY() - y));
+                    x = e.getX();
+                    y = e.getY();
+                }            
                 repaint();
             }
         });
         addMouseListener(new MouseAdapter() {
             public void mouseReleased(MouseEvent e) {
+                if (idTool == 1)
+                    idSelecionado = formas.size() - 1;
             }
         });
     }
@@ -70,19 +94,20 @@ public class Painel extends JPanel {
     public void mudarForma(String f) {
         tipoForma = f;
     }
+    
+    public void mudarTool(int i) {
+        idTool = i;
+    }
 
-    /**public void removerForma(int x, int y) {
-     * Fix
-        Retângulo[] novasFormas = new Retângulo[100];
-        for (Object object : col) {
-            
-        }
-        }
-            if (x < formas[i].getX() && x > (formas[i].getX() + formas[i].getLargura()))
-                novasFormas[i] = formas[i];
-        formas = novasFormas;
+    public void removerForma() {
+        formas.remove(idSelecionado);
+        idSelecionado --;
         repaint();
-    } **/
+    }
+    
+    public boolean regiaoOcupada(Forma f, int x, int y) {
+        return f.noLimite(x, y);
+    }
     
     @Override
     public void paintComponent(Graphics g) {
