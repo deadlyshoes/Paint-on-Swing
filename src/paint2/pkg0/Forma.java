@@ -33,4 +33,5 @@ public abstract class Forma {
     }
     
     public abstract void Desenhar(Graphics g);
+    public abstract boolean noLimite(int x, int y);
 }
