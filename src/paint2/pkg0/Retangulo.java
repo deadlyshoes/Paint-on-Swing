@@ -13,21 +13,8 @@ import java.awt.Graphics;
  * @author ilmar
  */
 public class Retangulo extends Forma {
-    private int largura;
-    private int altura;
-    
-    public Retangulo(int x, int y, Color cor, int largura, int altura) {
-        super(x, y, cor);
-        this.largura = largura;
-        this.altura = altura;
-    }
-
-    public int getLargura() {
-        return largura;
-    }
-    
-    public int getAltura() {
-        return altura;
+    public Retangulo(int x, int y, int largura, int altura, Color cor) {
+        super(x, y, largura, altura, cor);
     }
     
     @Override

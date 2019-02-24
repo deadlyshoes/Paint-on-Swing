@@ -16,11 +16,15 @@ import java.awt.Graphics;
 public abstract class Forma {
     protected int x;
     protected int y;
+    protected int largura;
+    protected int altura;
     protected Color cor;
     
-    public Forma(int x, int y, Color cor) {
+    public Forma(int x, int y, int largura, int altura, Color cor) {
         this.x = x;
         this.y = y;
+        this.largura = largura;
+        this.altura = altura;
         this.cor = cor;
     }
 
@@ -31,6 +35,14 @@ public abstract class Forma {
     public void setY(int y) {
         this.y = y;
     }
+
+    public void setLargura(int largura) {
+        this.largura = largura;
+    }
+
+    public void setAltura(int altura) {
+        this.altura = altura;
+    }
     
     public int getX() {
         return x;
@@ -38,6 +50,14 @@ public abstract class Forma {
 
     public int getY() {
         return y;
+    }
+
+    public int getLargura() {
+        return largura;
+    }
+
+    public int getAltura() {
+        return altura;
     }
     
     public abstract void Desenhar(Graphics g);

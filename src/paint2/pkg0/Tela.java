@@ -46,6 +46,7 @@ public class Tela extends javax.swing.JFrame {
         jToggleButton14 = new javax.swing.JToggleButton();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jToggleButton15 = new javax.swing.JToggleButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -194,6 +195,14 @@ public class Tela extends javax.swing.JFrame {
             }
         });
 
+        buttonGroup2.add(jToggleButton15);
+        jToggleButton15.setText("Redimensionar");
+        jToggleButton15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton15ActionPerformed(evt);
+            }
+        });
+
         jMenu1.setText("Arquivo");
 
         jMenuItem1.setText("Sair");
@@ -233,6 +242,8 @@ public class Tela extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jToggleButton14)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jToggleButton15)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton2)))
@@ -250,7 +261,7 @@ public class Tela extends javax.swing.JFrame {
                 .addComponent(jToggleButton11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jToggleButton12)
-                .addGap(0, 117, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -275,7 +286,8 @@ public class Tela extends javax.swing.JFrame {
                     .addComponent(jToggleButton13)
                     .addComponent(jToggleButton14)
                     .addComponent(jButton1)
-                    .addComponent(jButton2)))
+                    .addComponent(jButton2)
+                    .addComponent(jToggleButton15)))
         );
 
         pack();
@@ -350,6 +362,10 @@ public class Tela extends javax.swing.JFrame {
         painel1.Desfazer();
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jToggleButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton15ActionPerformed
+        painel1.mudarTool(3);
+    }//GEN-LAST:event_jToggleButton15ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -400,6 +416,7 @@ public class Tela extends javax.swing.JFrame {
     private javax.swing.JToggleButton jToggleButton12;
     private javax.swing.JToggleButton jToggleButton13;
     private javax.swing.JToggleButton jToggleButton14;
+    private javax.swing.JToggleButton jToggleButton15;
     private javax.swing.JToggleButton jToggleButton2;
     private javax.swing.JToggleButton jToggleButton3;
     private javax.swing.JToggleButton jToggleButton4;
