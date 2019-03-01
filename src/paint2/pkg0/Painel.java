@@ -25,7 +25,7 @@ public class Painel extends JPanel {
     private int y;
     private int altura;
     private int largura;
-    private String tipoForma;
+    private String tipoForma = "Retangulo";
     private ArrayList<Forma> formas = new ArrayList();
     private Color[] cores = {Color.BLACK, Color.BLUE, Color.CYAN, 
                              Color.GRAY, Color.GREEN, Color.LIGHT_GRAY,
@@ -33,7 +33,7 @@ public class Painel extends JPanel {
                              Color.RED, Color.WHITE, Color.YELLOW};
     private int idCor;
     private int idTool = 1;
-    private int idSelecionado = 0;
+    private int idSelecionado = -1;
     private boolean[] mouseCoords = new boolean[4]; //Leste, Oeste, Norte e Sul
     private Forma formaBackup;
     
@@ -42,19 +42,17 @@ public class Painel extends JPanel {
             public void mousePressed(MouseEvent e) {
                 x = e.getX();
                 y = e.getY();
-                if (idTool == 1)
+                if (idTool == 1) {
                     formas.add(new Retangulo(0, 0, 0, 0, null)); //Dummy
-                else if (idTool == 2) { 
+                    idSelecionado = -1;
+                }
+                else if (idTool == 4) {
+                    idSelecionado = -1;
+                    repaint();
                     for (int i = formas.size() - 1; i >= 0; i--) {
                         if (regiaoOcupada(formas.get(i), x, y)) {
                             idSelecionado = i;
-                            /**Mover a forma selecionada para cima
-                            Forma tmp = formas.get(idSelecionado);
-                            formas.remove(idSelecionado);
-                            formas.add(tmp);
-                            idSelecionado = formas.size() - 1;
                             repaint();
-                            **/
                             break;
                         }
                     }
@@ -85,13 +83,13 @@ public class Painel extends JPanel {
                     int tmpY = Math.min(y, e.getY());
                     largura = Math.abs(x - e.getX());
                     altura = Math.abs(y - e.getY());
-                    Retangulo formaNova = new Retangulo(
-                            tmpX, tmpY, largura, altura, cores[idCor]);
-                    /**switch (tipoForma) {
-                    case "Circunferência": formaNova = (Circunferência) formaNova;
-                    case "Elipse": formaNova = (Elipse) formaNova;
-                    case "Triângulo": formaNova = (Triângulo) formaNova;
-                    } **/
+                    Forma formaNova = null;
+                    switch (tipoForma) {
+                        case "Retangulo": formaNova = new Retangulo(tmpX, tmpY, largura, altura, cores[idCor]);
+                                          break;
+                        case "Elipse": formaNova = new Elipse(tmpX, tmpY, largura, altura, cores[idCor]);
+                                       break;
+                    }
                     formas.set(formas.size() - 1, formaNova);
                 }
                 else if (idTool == 2) {
@@ -103,11 +101,6 @@ public class Painel extends JPanel {
                     y = e.getY();
                 }
                 else if (idTool == 3) {
-                    System.out.println(mouseCoords[0]);
-                    System.out.println(mouseCoords[1]);
-                    System.out.println(mouseCoords[2]);
-                    System.out.println(mouseCoords[3]);
-                    System.out.println("====");
                     if (mouseCoords[0] == true && x < formas.get(idSelecionado).getX()) {
                         formas.get(idSelecionado).setX(formas.get(idSelecionado).getX() + (e.getX() - x));
                         formas.get(idSelecionado).setLargura(formas.get(idSelecionado).getLargura() + (x - e.getX()));
@@ -132,9 +125,7 @@ public class Painel extends JPanel {
         });
         addMouseListener(new MouseAdapter() {
             public void mouseReleased(MouseEvent e) {
-                if (idTool == 1)
-                    idSelecionado = formas.size() - 1;
-                else if (idTool == 3)
+                if (idTool == 3)
                     mouseCoords = new boolean[4];
             }
         });
@@ -155,7 +146,7 @@ public class Painel extends JPanel {
     public void removerForma() {
         formaBackup = formas.get(idSelecionado);
         formas.remove(idSelecionado);
-        idSelecionado --;
+        idSelecionado = -1;
         repaint();
     }
     
@@ -168,11 +159,22 @@ public class Painel extends JPanel {
         return f.noLimite(x, y);
     }
     
+    public ArrayList<Forma> getFormas() {
+        return formas;
+    }
+
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         for (Forma forma : formas) {
             forma.Desenhar(g);
+        }
+        if (idSelecionado != -1) {
+            if (formas.get(idSelecionado).getCor() == Color.BLACK)
+                g.setColor(Color.GRAY);
+            else
+                g.setColor(Color.GREEN);
+            g.drawRect(formas.get(idSelecionado).getX(), formas.get(idSelecionado).getY(), formas.get(idSelecionado).getLargura(), formas.get(idSelecionado).getAltura());
         }
     }
 }

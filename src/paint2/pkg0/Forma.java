@@ -43,6 +43,10 @@ public abstract class Forma {
     public void setAltura(int altura) {
         this.altura = altura;
     }
+
+    public void setCor(Color cor) {
+        this.cor = cor;
+    }  
     
     public int getX() {
         return x;
@@ -58,6 +62,10 @@ public abstract class Forma {
 
     public int getAltura() {
         return altura;
+    }
+
+    public Color getCor() {
+        return cor;
     }
     
     public abstract void Desenhar(Graphics g);

@@ -12,20 +12,23 @@ import java.awt.Graphics;
  *
  * @author ilmar
  */
-public class Retangulo extends Forma {
-    public Retangulo(int x, int y, int largura, int altura, Color cor) {
+public class Elipse extends Forma {
+    public Elipse(int x, int y, int largura, int altura, Color cor) {
         super(x, y, largura, altura, cor);
     }
-    
+
     @Override
     public void Desenhar(Graphics g) {
         g.setColor(cor);
-        g.fillRect(x, y, largura, altura);
+        g.fillOval(x, y, largura, altura);
     }
-    
+
     @Override
     public boolean noLimite(int x, int y) {
-        return x > this.x && x < this.x + largura &&
-               y > this.y && y < this.y + altura;
+        int centroX = this.x + largura / 2;
+        int centroY = this.y + altura / 2;
+        double pontoY = (altura / 2) * Math.sqrt(1 - ((4 * (x - centroX) * (x - centroX)) / (float) (largura * largura)));
+        return (x > this.x && x < this.x + largura &&
+                y > centroY - pontoY && y < centroY + pontoY);
     }
 }
