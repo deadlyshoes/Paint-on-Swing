@@ -5,6 +5,9 @@
  */
 package paint2.pkg0;
 
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 /**
  *
  * @author ilmar
@@ -244,6 +247,12 @@ public class Tela extends javax.swing.JFrame {
             }
         });
 
+        jListCustom1.addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent e) {
+                painel1.setId(jListCustom1.getSelectedIndex());
+                painel1.repaint();
+            }
+        });
         jScrollPane1.setViewportView(jListCustom1);
 
         jButton4.setText("Cima");
@@ -473,11 +482,13 @@ public class Tela extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         jListCustom1.moverCima();
+        painel1.setId(painel1.getId() - 1);
         painel1.repaint();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         jListCustom1.moverBaixo();
+        painel1.setId(painel1.getId() + 1);
         painel1.repaint();
     }//GEN-LAST:event_jButton5ActionPerformed
 

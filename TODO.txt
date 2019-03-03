@@ -1,0 +1,2 @@
+Clique no painel -> JList.setSelectedIndex();
+Criar uma classe para cuidar da lista de formas.

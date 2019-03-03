@@ -155,6 +155,14 @@ public class Painel extends JPanel {
         repaint();
     }
     
+    public void setId(int id) {
+        idSelecionado = id;
+    }
+    
+    public int getId() {
+        return idSelecionado;
+    }
+    
     public boolean regiaoOcupada(Forma f, int x, int y) {
         return f.noLimite(x, y);
     }
