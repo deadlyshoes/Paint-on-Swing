@@ -12,8 +12,9 @@ package paint2.pkg0;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.io.Serializable;
 
-public abstract class Forma {
+public abstract class Forma implements Serializable {
     protected int x;
     protected int y;
     protected int largura;

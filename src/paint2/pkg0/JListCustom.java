@@ -5,8 +5,6 @@
  */
 package paint2.pkg0;
 
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
@@ -14,42 +12,49 @@ import javax.swing.JList;
 /**
  *
  * @author ilmar
+ * @param <Forma>
  */
-public class JListCustom<T> extends JList {
-    //O campo model no design JFrame deve estar em branco
-    DefaultListModel listModel = new DefaultListModel();
-    ArrayList<T> objetos = new ArrayList();
+public class JListCustom<Forma> extends JList {
+    DefaultListModel listModel;
+    ArrayList<Forma> formas;
     
-    public void moverCima() {
+    public void Atualizar(Editor ed) {
+        formas = (ArrayList<Forma>) ed.getFormas();
+        listModel = ed.getFormasJL();
+        setModel(listModel);
+    }
+    
+    public boolean moverCima() {
         int i = getSelectedIndex();
         
         if (i > 0) {
-            T itemSelecionado = objetos.get(i);
-            objetos.remove(i);
-            objetos.add(i - 1, itemSelecionado);
-            Atualizar(objetos);
+            Forma itemSelecionado = formas.get(i);
+            formas.remove(i);
+            formas.add(i - 1, itemSelecionado);
+            listModel.clear();
+            for (Forma forma : formas) {
+                listModel.addElement(forma);
+            }
             setSelectedIndex(i - 1);
+            return true;
         }
+        return false;
     }
     
-    public void moverBaixo() {   
+    public boolean moverBaixo() {   
         int i = getSelectedIndex();
         
         if (i < listModel.getSize() - 1) {
-            T itemSelecionado = objetos.get(i);
-            objetos.remove(i);
-            objetos.add(i + 1, itemSelecionado);
-            Atualizar(objetos);
+            Forma itemSelecionado = formas.get(i);
+            formas.remove(i);
+            formas.add(i + 1, itemSelecionado);
+            listModel.clear();
+            for (Forma forma : formas) {
+                listModel.addElement(forma);
+            }
             setSelectedIndex(i + 1);
+            return true;
         }
-    }
-    
-    public void Atualizar(ArrayList<T> alist) {
-        objetos = alist;
-        listModel.clear();
-        for (T objeto : objetos) {
-            listModel.addElement(objeto);
-        }
-        setModel(listModel);
+        return false;
     }
 }
