@@ -1,2 +1,6 @@
-Clique no painel -> JList.setSelectedIndex();
-Criar uma classe para cuidar da lista de formas.
+Terminar todas as formas
+Implementar salvar e abrir
+Organizar as classes
+Tratar os erros
+Criar os ícones para alguns botões: cores, formas, etc.
+Organizar a interface
