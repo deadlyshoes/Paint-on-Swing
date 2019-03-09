@@ -23,6 +23,7 @@ public class Editor {
     private ArrayList<Forma> formas;
     private ArrayList<Forma> formasBackup;
     private DefaultListModel formasJL;
+    private int idSelecionado;
     
     public Editor() {
         formas = new ArrayList();
@@ -30,14 +31,22 @@ public class Editor {
         formasJL = new DefaultListModel();
     }
     
+    public void setId(int i) {
+        idSelecionado = i;
+    }
+    
+    public int getForma() {
+        return idSelecionado;
+    }
+    
     public void adicionarForma(Forma forma) {
         formas.add(forma);
         atualizarFormasJL();
     }
     
-    public void removerForma(int i) {
-        formasBackup.add(formas.get(i));
-        formas.remove(i);
+    public void removerForma() {
+        formasBackup.add(formas.get(idSelecionado));
+        formas.remove(idSelecionado);
         atualizarFormasJL();
     }
     
