@@ -32,7 +32,6 @@ public class Painel extends JPanel {
                              Color.RED, Color.WHITE, Color.YELLOW};
     private int idCor;
     private int idTool = 1;
-    private int idSelecionado = -1;
     private boolean[] mouseCoords = new boolean[4]; //Leste, Oeste, Norte e Sul
     
     public Painel() {
@@ -43,14 +42,14 @@ public class Painel extends JPanel {
                 y = e.getY();
                 if (idTool == 1) {
                     editor.adicionarForma(new Retangulo(0, 0, 0, 0, null)); //Dummy
-                    idSelecionado = -1;
+                    editor.setId(-1);
                 }
                 else if (idTool == 4) {
-                    idSelecionado = -1;
+                    editor.setId(-1);
                     repaint();
                     for (int i = editor.getFormas().size() - 1; i >= 0; i--) {
                         if (regiaoOcupada(editor.getFormas().get(i), x, y)) {
-                            idSelecionado = i;
+                            editor.setId(i);
                             jl.setSelectedIndex(i);
                             repaint();
                             break;
@@ -58,7 +57,7 @@ public class Painel extends JPanel {
                     }
                 }
                 else if (idTool == 3) {     
-                    Forma fSelec = editor.getFormas().get(idSelecionado);
+                    Forma fSelec = editor.getFormas().get(editor.getId());
                     if (x < fSelec.getX() && x > fSelec.getX() - 10) {
                         mouseCoords[0] = true;
                     }
@@ -101,7 +100,7 @@ public class Painel extends JPanel {
                     editor.getFormas().set(editor.getFormas().size() - 1, formaNova);
                 }
                 else if (idTool == 2) {
-                    Forma fSelec = editor.getFormas().get(idSelecionado);
+                    Forma fSelec = editor.getFormas().get(editor.getId());
                     fSelec.setX(
                             fSelec.getX() + (e.getX() - x));
                     fSelec.setY(
@@ -110,7 +109,7 @@ public class Painel extends JPanel {
                     y = e.getY();
                 }
                 else if (idTool == 3) {
-                    Forma fSelec = editor.getFormas().get(idSelecionado);
+                    Forma fSelec = editor.getFormas().get(editor.getId());
                     if (mouseCoords[0] == true && x < fSelec.getX()) {
                         fSelec.setX(fSelec.getX() + (e.getX() - x));
                         fSelec.setLargura(fSelec.getLargura() + (x - e.getX()));
@@ -155,8 +154,8 @@ public class Painel extends JPanel {
     }
 
     public void Remover() {
-        editor.removerForma(idSelecionado);
-        idSelecionado = -1;
+        editor.removerForma(editor.getId());
+        editor.setId(-1);
         repaint();
     }
     
@@ -170,11 +169,11 @@ public class Painel extends JPanel {
     }
     
     public void setId(int id) {
-        idSelecionado = id;
+        editor.setId(id);
     }
     
     public int getId() {
-        return idSelecionado;
+        return editor.getId()
     }
 
     @Override
@@ -183,8 +182,8 @@ public class Painel extends JPanel {
         for (Forma forma : editor.getFormas()) {
             forma.Desenhar(g);
         }
-        if (idSelecionado != -1) {
-            Forma fSelec = editor.getFormas().get(idSelecionado);
+        if (editor.getId() != -1) {
+            Forma fSelec = editor.getFormas().get(editor.getId());
             if (fSelec.getCor() == Color.BLACK) {
                 g.setColor(Color.ORANGE);
             }
