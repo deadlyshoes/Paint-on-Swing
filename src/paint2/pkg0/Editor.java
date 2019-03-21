@@ -17,7 +17,8 @@ import javax.swing.DefaultListModel;
 
 /**
  *
- * @author ilmar
+ * @author João Neto
+ * @author José Ilmar
  */
 public class Editor {
     private ArrayList<Forma> formas;
@@ -31,6 +32,10 @@ public class Editor {
         formasJL = new DefaultListModel();
     }
     
+    /**
+     * 
+     * @param i 
+     */
     public void setId(int i) {
         idSelecionado = i;
     }
@@ -39,17 +44,27 @@ public class Editor {
         return idSelecionado;
     }
     
+    /**
+     * 
+     * @param forma 
+     */
     public void adicionarForma(Forma forma) {
         formas.add(forma);
         atualizarFormasJL();
     }
     
+    /**
+     * 
+     */
     public void removerForma() {
         formasBackup.add(formas.get(idSelecionado));
         formas.remove(idSelecionado);
         atualizarFormasJL();
     }
     
+    /**
+     * 
+     */
     public void restaurarForma() {
         if (formasBackup.size() > 0) {
             formas.add(formasBackup.get(formasBackup.size() - 1));
@@ -57,33 +72,55 @@ public class Editor {
         }
     }
     
+    /**
+     * 
+     */
     private void atualizarFormasJL() {
         formasJL.clear();
-        for (Forma forma : formas) {
+        formas.forEach((forma) -> {
             formasJL.addElement(forma);
-        }
+        });
     }
     
+    /**
+     * 
+     * @return 
+     */
     public ArrayList<Forma> getFormas() {
         return formas;
     }
     
+    /**
+     * 
+     * @return 
+     */
     public DefaultListModel getFormasJL() {
         return formasJL;
     }
     
+    /**
+     * 
+     * @param arquivo
+     * @throws FileNotFoundException
+     * @throws IOException 
+     */
     public void Salvar(String arquivo) throws FileNotFoundException, IOException {
         FileOutputStream fos = new FileOutputStream(arquivo);
-        ObjectOutputStream oos = new ObjectOutputStream(fos);
-        
-        for (Forma forma : formas) {
-            oos.writeObject(forma);
+        try (ObjectOutputStream oos = new ObjectOutputStream(fos)) {
+            for (Forma forma : formas) {
+                oos.writeObject(forma);
+            }
+            oos.flush();
         }
-        
-        oos.flush();
-        oos.close();
     }
     
+    /**
+     * 
+     * @param arquivo
+     * @throws FileNotFoundException
+     * @throws IOException
+     * @throws ClassNotFoundException 
+     */
     public void Carregar(String arquivo) throws FileNotFoundException, IOException, ClassNotFoundException {
         FileInputStream fis = new FileInputStream(arquivo);
         ObjectInputStream ois = new ObjectInputStream(fis);

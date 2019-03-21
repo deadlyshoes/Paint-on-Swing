@@ -7,7 +7,8 @@ package paint2.pkg0;
 
 /**
  *
- * @author ilmar
+ * @author João Neto
+ * @author José Ilmar
  */
 public class Paint20 {
 

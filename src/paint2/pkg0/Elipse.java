@@ -13,16 +13,34 @@ import java.awt.Graphics;
  * @author ilmar
  */
 public class Elipse extends Forma {
+    /**
+     * 
+     * @param x
+     * @param y
+     * @param largura
+     * @param altura
+     * @param cor 
+     */
     public Elipse(int x, int y, int largura, int altura, Color cor) {
         super(x, y, largura, altura, cor);
     }
 
+    /**
+     *
+     * @param g
+     */
     @Override
     public void Desenhar(Graphics g) {
         g.setColor(cor);
         g.fillOval(x, y, largura, altura);
     }
 
+    /**
+     *
+     * @param x
+     * @param y
+     * @return
+     */
     @Override
     public boolean noLimite(int x, int y) {
         int centroX = this.x + largura / 2;

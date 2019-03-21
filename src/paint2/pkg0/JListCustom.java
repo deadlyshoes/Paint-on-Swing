@@ -11,19 +11,28 @@ import javax.swing.JList;
 
 /**
  *
- * @author ilmar
+ * @author João Neto
+ * @author José Ilmar
  * @param <Forma>
  */
 public class JListCustom<Forma> extends JList {
     DefaultListModel listModel;
     ArrayList<Forma> formas;
     
+    /**
+     * 
+     * @param ed 
+     */
     public void Atualizar(Editor ed) {
         formas = (ArrayList<Forma>) ed.getFormas();
         listModel = ed.getFormasJL();
         setModel(listModel);
     }
     
+    /**
+     * 
+     * @return 
+     */
     public boolean moverCima() {
         int i = getSelectedIndex();
         
@@ -32,15 +41,19 @@ public class JListCustom<Forma> extends JList {
             formas.remove(i);
             formas.add(i - 1, itemSelecionado);
             listModel.clear();
-            for (Forma forma : formas) {
+            formas.forEach((forma) -> {
                 listModel.addElement(forma);
-            }
+            });
             setSelectedIndex(i - 1);
             return true;
         }
         return false;
     }
     
+    /**
+     * 
+     * @return 
+     */
     public boolean moverBaixo() {   
         int i = getSelectedIndex();
         
@@ -49,9 +62,9 @@ public class JListCustom<Forma> extends JList {
             formas.remove(i);
             formas.add(i + 1, itemSelecionado);
             listModel.clear();
-            for (Forma forma : formas) {
+            formas.forEach((forma) -> {
                 listModel.addElement(forma);
-            }
+            });
             setSelectedIndex(i + 1);
             return true;
         }

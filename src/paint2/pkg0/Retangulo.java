@@ -10,7 +10,8 @@ import java.awt.Graphics;
 
 /**
  *
- * @author ilmar
+ * @author João Neto
+ * @author José Ilmar
  */
 public class Retangulo extends Forma {
     public Retangulo(int x, int y, int largura, int altura, Color cor) {
