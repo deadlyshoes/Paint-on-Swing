@@ -98,11 +98,43 @@ public class Painel extends JPanel {
                             case "Triangulo": formaNova = new Triangulo(tmpX, tmpY, largura, altura, cores[idCor]);
                             break;
                             case "Circunferencia": 
-                                if (Math.min(largura, altura) == altura)
-                                    formaNova = new Elipse(tmpX, tmpY, altura, altura, cores[idCor]);
-                                else
-                                    formaNova = new Elipse(tmpX, tmpY, largura, largura, cores[idCor]);
+                                if (Math.min(largura, altura) == altura) {
+                                    if (e.getX() < x) {
+                                        formaNova = new Elipse(x - altura, tmpY, altura, altura, cores[idCor]);
+                                    }
+                                    else {
+                                        formaNova = new Elipse(tmpX, tmpY, altura, altura, cores[idCor]);
+                                    }
+                                }
+                                else {
+                                    if (e.getY() < y) {
+                                        formaNova = new Elipse(tmpX, y - largura, largura, largura, cores[idCor]);
+                                    }
+                                    else {
+                                        formaNova = new Elipse(tmpX, tmpY, largura, largura, cores[idCor]);
+                                    }                                    
+                                }
                                 break;
+                            case "TrianguloRet": formaNova = new TrianguloRet(tmpX, tmpY, largura, altura, cores[idCor]);
+                            break;
+                            case "Quadrado":
+                                if (Math.min(largura, altura) == altura) {
+                                    if (e.getX() < x) {
+                                        formaNova = new Retangulo(x - altura, tmpY, altura, altura, cores[idCor]);
+                                    }
+                                    else {
+                                        formaNova = new Retangulo(tmpX, tmpY, altura, altura, cores[idCor]);
+                                    }
+                                }
+                                else {
+                                    if (e.getY() < y) {
+                                        formaNova = new Retangulo(tmpX, y - largura, largura, largura, cores[idCor]);
+                                    }
+                                    else {
+                                        formaNova = new Retangulo(tmpX, tmpY, largura, largura, cores[idCor]);
+                                    }                                    
+                                }
+                            break;
                         }   editor.getFormas().set(editor.getFormas().size() - 1, formaNova);
                         break;
                     case 2:
@@ -156,6 +188,11 @@ public class Painel extends JPanel {
      */
     public void mudarCor(int i) {
        idCor = i;
+    }
+    
+    public void Repintar(){
+        editor.getFormas().get(idSelecionado).setCor(cores[idCor]);
+        repaint();
     }
     
     /**

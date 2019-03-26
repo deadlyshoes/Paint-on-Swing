@@ -16,7 +16,8 @@ public class Paint20 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
+        Tela tela = new Tela();
+        Tela.main(args);
     }
     
 }
