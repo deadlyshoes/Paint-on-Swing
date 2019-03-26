@@ -45,7 +45,15 @@ public class Triangulo extends Forma{
      */
     @Override
     public boolean noLimite(int x, int y) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        double y1Max = (-1*altura*2/ (float) largura)*x + this.y + altura + this.x*2*altura/ (float) largura;
+        double y2Max = (altura*2/ (float) largura)*x + altura + -1*(this.y + altura + this.x*2*altura/ (float) largura);
+        System.out.println(y1Max);
+        System.out.println(y2Max);
+        System.out.println(y);
+        return (x > this.x && x < this.x + largura / 2 &&
+                y > y1Max && y < this.y + altura) ||
+               (x > this.x + largura / 2 && x < this.x + largura
+                && y > y2Max && y < this.y + altura);
     }
     
 }
