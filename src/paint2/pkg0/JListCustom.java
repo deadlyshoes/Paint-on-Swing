@@ -23,9 +23,9 @@ public class JListCustom<Forma> extends JList {
      * 
      * @param ed 
      */
-    public void Atualizar(Editor ed) {
-        formas = (ArrayList<Forma>) ed.getFormas();
-        listModel = ed.getFormasJL();
+    public void Atualizar() {
+        formas = (ArrayList<Forma>) Editor.getEditor().getFormas();
+        listModel = Editor.getEditor().getFormasJL();
         setModel(listModel);
     }
     

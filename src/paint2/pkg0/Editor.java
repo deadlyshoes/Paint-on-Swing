@@ -25,11 +25,18 @@ public class Editor {
     private ArrayList<Forma> formasBackup;
     private DefaultListModel formasJL;
     private int idSelecionado;
+    private static Editor instance;
     
-    public Editor() {
+    private Editor() {
         formas = new ArrayList();
         formasBackup = new ArrayList();
         formasJL = new DefaultListModel();
+    }
+    
+    public static Editor getEditor() {
+        if (instance == null)
+            instance = new Editor();
+        return instance;
     }
     
     /**
@@ -106,12 +113,11 @@ public class Editor {
      */
     public void Salvar(String arquivo) throws FileNotFoundException, IOException {
         FileOutputStream fos = new FileOutputStream(arquivo);
-        try (ObjectOutputStream oos = new ObjectOutputStream(fos)) {
-            for (Forma forma : formas) {
-                oos.writeObject(forma);
-            }
-            oos.flush();
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
+        for (Forma forma : formas) {
+            oos.writeObject(forma);
         }
+        oos.flush();
     }
     
     /**
@@ -122,11 +128,11 @@ public class Editor {
      * @throws ClassNotFoundException 
      */
     public void Carregar(String arquivo) throws FileNotFoundException, IOException, ClassNotFoundException {
-        FileInputStream fis = new FileInputStream(arquivo);
-        ObjectInputStream ois = new ObjectInputStream(fis);
-        
         formas.clear();
         formasBackup.clear();
+        
+        FileInputStream fis = new FileInputStream(arquivo);
+        ObjectInputStream ois = new ObjectInputStream(fis);     
         
         try {
             while (true) {

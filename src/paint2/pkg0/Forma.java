@@ -5,11 +5,6 @@
  */
 package paint2.pkg0;
 
-/**
- *
- * @author ilmar
- */
-
 import java.awt.Color;
 import java.awt.Graphics;
 import java.io.Serializable;
@@ -17,6 +12,7 @@ import java.io.Serializable;
 /**
  *
  * @author João Neto
+ * @author José Ilmar
  */
 public abstract class Forma implements Serializable {
     protected int x;

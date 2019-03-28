@@ -7,9 +7,11 @@ package paint2.pkg0;
 
 import java.awt.Color;
 import java.awt.Graphics;
+
 /**
  *
  * @author João Neto
+ * @author José Ilmar
  */
 public class TrianguloRet extends Forma{
 
@@ -45,7 +47,9 @@ public class TrianguloRet extends Forma{
      */
     @Override
     public boolean noLimite(int x, int y) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        double yMax = (altura/(float) largura)*x + this.y - ((altura / (float) largura) * this.x);
+        return (x > this.x && x < this.x + largura &&
+                y > yMax && y < this.y + altura);
     }
     
 }

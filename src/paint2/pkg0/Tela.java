@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -214,7 +215,7 @@ public class Tela extends javax.swing.JFrame {
         });
 
         buttonGroup3.add(jToggleButton16);
-        jToggleButton16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paint2/pkg0/software-shape-rectangle_98272.png"))); // NOI18N
+        jToggleButton16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paint2/pkg0/icons/software-shape-rectangle_98272.png"))); // NOI18N
         jToggleButton16.setSelected(true);
         jToggleButton16.setToolTipText("");
         jToggleButton16.addActionListener(new java.awt.event.ActionListener() {
@@ -232,7 +233,7 @@ public class Tela extends javax.swing.JFrame {
         });
 
         buttonGroup3.add(jToggleButton18);
-        jToggleButton18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paint2/pkg0/ellipse_filled-48_45529.png"))); // NOI18N
+        jToggleButton18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paint2/pkg0/icons/ellipse_filled-48_45529.png"))); // NOI18N
         jToggleButton18.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton18ActionPerformed(evt);
@@ -253,7 +254,7 @@ public class Tela extends javax.swing.JFrame {
             }
         });
 
-        jListCustom1.Atualizar(ed);
+        jListCustom1.Atualizar();
         jListCustom1.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
                 painel1.setId(jListCustom1.getSelectedIndex());
@@ -263,7 +264,7 @@ public class Tela extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jListCustom1);
 
         painel1.setBackground(new java.awt.Color(255, 255, 255));
-        painel1.Atualizar(ed, jListCustom1);
+        painel1.Atualizar(jListCustom1);
 
         javax.swing.GroupLayout painel1Layout = new javax.swing.GroupLayout(painel1);
         painel1.setLayout(painel1Layout);
@@ -277,7 +278,7 @@ public class Tela extends javax.swing.JFrame {
         );
 
         buttonGroup3.add(jToggleButton19);
-        jToggleButton19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paint2/pkg0/dark-triangle_icon-icons.com_54020.png"))); // NOI18N
+        jToggleButton19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paint2/pkg0/icons/dark-triangle_icon-icons.com_54020.png"))); // NOI18N
         jToggleButton19.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton19ActionPerformed(evt);
@@ -285,7 +286,7 @@ public class Tela extends javax.swing.JFrame {
         });
 
         buttonGroup3.add(jToggleButton20);
-        jToggleButton20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paint2/pkg0/filled-circle_icon-icons.com_72757.png"))); // NOI18N
+        jToggleButton20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paint2/pkg0/icons/filled-circle_icon-icons.com_72757.png"))); // NOI18N
         jToggleButton20.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton20ActionPerformed(evt);
@@ -308,8 +309,7 @@ public class Tela extends javax.swing.JFrame {
         });
 
         buttonGroup3.add(jToggleButton22);
-        jToggleButton22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paint2/pkg0/square-shape-shadow_icon-icons.com_73397.png"))); // NOI18N
-        jToggleButton22.setActionCommand("");
+        jToggleButton22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paint2/pkg0/icons/square-shape-shadow_icon-icons.com_73397.png"))); // NOI18N
         jToggleButton22.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton22ActionPerformed(evt);
@@ -572,7 +572,13 @@ public class Tela extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-
+        if (Editor.getEditor().getFormas().size() > 0) {
+            int resposta = JOptionPane.showConfirmDialog (null, "O painel foi modificado, gostaria de salvar as suas mudanças antes?","Aviso", JOptionPane.YES_NO_OPTION);
+            if (resposta == JOptionPane.YES_OPTION) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        }
+        
         JFileChooser fileChooser = new JFileChooser();
         int returnVal = fileChooser.showOpenDialog(fileChooser);
         if (returnVal == JFileChooser.APPROVE_OPTION) {
@@ -580,10 +586,8 @@ public class Tela extends javax.swing.JFrame {
             File file = fileChooser.getSelectedFile();
             arquivo = file.getAbsolutePath();
             try {
-                ed.Carregar(arquivo);
-            } catch (IOException ex) {
-                Logger.getLogger(Tela.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (ClassNotFoundException ex) {
+                Editor.getEditor().Carregar(arquivo);
+            } catch (IOException | ClassNotFoundException ex) {
                 Logger.getLogger(Tela.class.getName()).log(Level.SEVERE, null, ex);
             }
             painel1.repaint();
@@ -592,13 +596,14 @@ public class Tela extends javax.swing.JFrame {
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Salvar");
         int returnVal = fileChooser.showOpenDialog(fileChooser);
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             String arquivo;
             File file = fileChooser.getSelectedFile();
             arquivo = file.getAbsolutePath();
             try {
-                ed.Salvar(arquivo);
+                Editor.getEditor().Salvar(arquivo);
             } catch (IOException ex) {
                 Logger.getLogger(Tela.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -641,15 +646,11 @@ public class Tela extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Tela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Tela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Tela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Tela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        
         //</editor-fold>
 
         /* Create and display the form */
@@ -657,8 +658,6 @@ public class Tela extends javax.swing.JFrame {
             new Tela().setVisible(true);
         });
     }
-    
-    Editor ed = new Editor();
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;

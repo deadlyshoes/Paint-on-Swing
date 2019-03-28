@@ -5,12 +5,6 @@
  */
 package paint2.pkg0;
 
-/**
- *
- * @author João Neto
- * @author José Ilmar
- */
-
 import javax.swing.JPanel;
 import java.awt.Graphics;
 import java.awt.Color;
@@ -18,6 +12,11 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
         
+/**
+ *
+ * @author João Neto
+ * @author José Ilmar
+ */
 public class Painel extends JPanel {
     private Editor editor;
     private JListCustom jl;
@@ -25,21 +24,25 @@ public class Painel extends JPanel {
     private int y;
     private int altura; 
     private int largura;
-    private String tipoForma = "Retangulo";
+    private String tipoForma;
     private Color[] cores = {Color.BLACK, Color.BLUE, Color.CYAN,
                              Color.GRAY, Color.GREEN, Color.LIGHT_GRAY,
                              Color.MAGENTA, Color.ORANGE, Color.PINK,
                              Color.RED, Color.WHITE, Color.YELLOW};
     private int idCor;
-    private int idTool = 1;
-    private int idSelecionado = -1;
-    private boolean[] mouseCoords = new boolean[4]; //Leste, Oeste, Norte e Sul
+    private int idTool;
+    private int idSelecionado;
+    private boolean[] mouseCoords;
     
     /**
      * 
      */
     public Painel() {
-        editor = new Editor();
+        editor = Editor.getEditor();
+        tipoForma = "Retangulo";
+        idTool = 1;
+        idSelecionado = -1;
+        mouseCoords = new boolean[4]; //Leste, Oeste, Norte e Sul
         addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
@@ -190,6 +193,9 @@ public class Painel extends JPanel {
        idCor = i;
     }
     
+    /**
+     *
+     */
     public void Repintar(){
         editor.getFormas().get(idSelecionado).setCor(cores[idCor]);
         repaint();
@@ -255,6 +261,10 @@ public class Painel extends JPanel {
         return idSelecionado;
     }
 
+    /**
+     *
+     * @param g
+     */
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -281,8 +291,7 @@ public class Painel extends JPanel {
      * @param ed
      * @param jl 
      */
-    public void Atualizar(Editor ed, JListCustom jl) {
-        this.editor = ed;
+    public void Atualizar(JListCustom jl) {
         this.jl = jl;
     }
 }

@@ -400,7 +400,7 @@
           <ComponentRef name="buttonGroup3"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/paint2/pkg0/software-shape-rectangle_98272.png"/>
+          <Image iconType="3" name="/paint2/pkg0/icons/software-shape-rectangle_98272.png"/>
         </Property>
         <Property name="selected" type="boolean" value="true"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
@@ -426,7 +426,7 @@
           <ComponentRef name="buttonGroup3"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/paint2/pkg0/ellipse_filled-48_45529.png"/>
+          <Image iconType="3" name="/paint2/pkg0/icons/ellipse_filled-48_45529.png"/>
         </Property>
       </Properties>
       <Events>
@@ -463,7 +463,7 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jListCustom1.Atualizar(ed);&#xa;jListCustom1.addMouseListener(new MouseAdapter() {&#xa;    public void mousePressed(MouseEvent e) {&#xa;        painel1.setId(jListCustom1.getSelectedIndex());&#xa;        painel1.repaint();&#xa;    }&#xa;});"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jListCustom1.Atualizar();&#xa;jListCustom1.addMouseListener(new MouseAdapter() {&#xa;    public void mousePressed(MouseEvent e) {&#xa;        painel1.setId(jListCustom1.getSelectedIndex());&#xa;        painel1.repaint();&#xa;    }&#xa;});"/>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Forma&gt;"/>
           </AuxValues>
         </Component>
@@ -476,7 +476,7 @@
         </Property>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="painel1.Atualizar(ed, jListCustom1);"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="painel1.Atualizar(jListCustom1);"/>
       </AuxValues>
 
       <Layout>
@@ -498,7 +498,7 @@
           <ComponentRef name="buttonGroup3"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/paint2/pkg0/dark-triangle_icon-icons.com_54020.png"/>
+          <Image iconType="3" name="/paint2/pkg0/icons/dark-triangle_icon-icons.com_54020.png"/>
         </Property>
       </Properties>
       <Events>
@@ -511,7 +511,7 @@
           <ComponentRef name="buttonGroup3"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/paint2/pkg0/filled-circle_icon-icons.com_72757.png"/>
+          <Image iconType="3" name="/paint2/pkg0/icons/filled-circle_icon-icons.com_72757.png"/>
         </Property>
       </Properties>
       <Events>
@@ -545,9 +545,8 @@
           <ComponentRef name="buttonGroup3"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/paint2/pkg0/square-shape-shadow_icon-icons.com_73397.png"/>
+          <Image iconType="3" name="/paint2/pkg0/icons/square-shape-shadow_icon-icons.com_73397.png"/>
         </Property>
-        <Property name="actionCommand" type="java.lang.String" value=""/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jToggleButton22ActionPerformed"/>
