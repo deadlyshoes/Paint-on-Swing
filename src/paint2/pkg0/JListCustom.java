@@ -25,17 +25,18 @@ public class JListCustom<Forma> extends JList {
      * @return 
      */
     public boolean moverCima() {
-        int i = getSelectedIndex();
+        int i = formas.size() - 1 - getSelectedIndex();
         
-        if (i > 0) {
+        if (getSelectedIndex() > 0) {
             Forma itemSelecionado = formas.get(i);
             formas.remove(i);
-            formas.add(i - 1, itemSelecionado);
+            formas.add(i + 1, itemSelecionado);
+            int selectedIndex = getSelectedIndex();
             listModel.clear();
-            formas.forEach((forma) -> {
+            for (Forma forma : formas) {
                 listModel.add(0, forma);
-            });
-            setSelectedIndex(i - 1);
+            }
+            setSelectedIndex(selectedIndex - 1);
             return true;
         }
         return false;
@@ -46,17 +47,18 @@ public class JListCustom<Forma> extends JList {
      * @return 
      */
     public boolean moverBaixo() {   
-        int i = getSelectedIndex();
+        int i = formas.size() - 1 - getSelectedIndex();
         
-        if (i < listModel.getSize() - 1) {
+        if (getSelectedIndex() < listModel.getSize() - 1) {
             Forma itemSelecionado = formas.get(i);
             formas.remove(i);
-            formas.add(i + 1, itemSelecionado);
+            formas.add(i - 1, itemSelecionado);
+            int selectedIndex = getSelectedIndex();
             listModel.clear();
-            formas.forEach((forma) -> {
+            for (Forma forma : formas) {
                 listModel.add(0, forma);
-            });
-            setSelectedIndex(i + 1);
+            }
+            setSelectedIndex(selectedIndex + 1);
             return true;
         }
         return false;
