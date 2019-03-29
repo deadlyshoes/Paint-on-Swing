@@ -1,9 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package paint2.pkg0;
+
+/**
+ *
+ * @author João Neto
+ * @author José Ilmar
+ */
 
 import javax.swing.JPanel;
 import java.awt.Graphics;
@@ -12,11 +13,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
         
-/**
- *
- * @author João Neto
- * @author José Ilmar
- */
 public class Painel extends JPanel {
     private Editor editor;
     private JListCustom jl;
@@ -30,7 +26,7 @@ public class Painel extends JPanel {
                              Color.MAGENTA, Color.ORANGE, Color.PINK,
                              Color.RED, Color.WHITE, Color.YELLOW};
     private int idCor;
-    private int idTool;
+    private String tool;
     private int idSelecionado;
     private boolean[] mouseCoords;
     
@@ -40,7 +36,7 @@ public class Painel extends JPanel {
     public Painel() {
         editor = Editor.getEditor();
         tipoForma = "Retangulo";
-        idTool = 1;
+        tool = "Desenhar";
         idSelecionado = -1;
         mouseCoords = new boolean[4]; //Leste, Oeste, Norte e Sul
         addMouseListener(new MouseAdapter() {
@@ -48,12 +44,12 @@ public class Painel extends JPanel {
             public void mousePressed(MouseEvent e) {
                 x = e.getX();
                 y = e.getY();
-                switch (idTool) {
-                    case 1:
-                        editor.adicionarForma(new Retangulo(0, 0, 0, 0, null)); //Dummy
+                switch (tool) {
+                    case "Desenhar":
+                        editor.getFormas().add(new Retangulo(0, 0, 0, 0, null)); //Dummy
                         idSelecionado = -1;
                         break;
-                    case 4:
+                    case "Selecionar":
                         idSelecionado = -1;
                         repaint();
                         for (int i = editor.getFormas().size() - 1; i >= 0; i--) {
@@ -64,7 +60,7 @@ public class Painel extends JPanel {
                                 break;
                             }
                         }   break;
-                    case 3:
+                    case "Redimensionar":
                         Forma fSelec = editor.getFormas().get(idSelecionado);
                         if (x < fSelec.getX() && x > fSelec.getX() - 10) {
                             mouseCoords[0] = true;
@@ -86,8 +82,8 @@ public class Painel extends JPanel {
         addMouseMotionListener(new MouseMotionAdapter() {
             @Override
             public void mouseDragged(MouseEvent e) {
-                switch (idTool) {
-                    case 1:
+                switch (tool) {
+                    case "Desenhar":
                         int tmpX = Math.min(x, e.getX());
                         int tmpY = Math.min(y, e.getY());
                         largura = Math.abs(x - e.getX());
@@ -138,9 +134,9 @@ public class Painel extends JPanel {
                                     }                                    
                                 }
                             break;
-                        }   editor.getFormas().set(editor.getFormas().size() - 1, formaNova);
+                        }   editor.adicionarForma(formaNova);
                         break;
-                    case 2:
+                    case "Mover":
                         {
                             Forma fSelec = editor.getFormas().get(idSelecionado);
                             fSelec.setX(
@@ -151,7 +147,7 @@ public class Painel extends JPanel {
                             y = e.getY();
                             break;
                         }
-                    case 3:
+                    case "Redimensionar":
                         {
                             Forma fSelec = editor.getFormas().get(idSelecionado);
                             if (mouseCoords[0] == true && x < fSelec.getX()) {
@@ -179,7 +175,7 @@ public class Painel extends JPanel {
         addMouseListener(new MouseAdapter() {
             @Override
             public void mouseReleased(MouseEvent e) {
-                if (idTool == 3)
+                if (tool == "Redimensionar")
                     mouseCoords = new boolean[4];
             }
         });
@@ -193,11 +189,9 @@ public class Painel extends JPanel {
        idCor = i;
     }
     
-    /**
-     *
-     */
-    public void Repintar(){
+    public void Repintar() {
         editor.getFormas().get(idSelecionado).setCor(cores[idCor]);
+        editor.atualizarFormasJL();
         repaint();
     }
     
@@ -211,17 +205,17 @@ public class Painel extends JPanel {
     
     /**
      * 
-     * @param i 
+     * @param t
      */
-    public void mudarTool(int i) {
-        idTool = i;
+    public void mudarTool(String t) {
+        tool = t;
     }
 
     /**
      * 
      */
     public void Remover() {
-        editor.removerForma();
+        editor.removerForma(idSelecionado);
         idSelecionado = -1;
         repaint();
     }
@@ -261,10 +255,6 @@ public class Painel extends JPanel {
         return idSelecionado;
     }
 
-    /**
-     *
-     * @param g
-     */
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -288,7 +278,6 @@ public class Painel extends JPanel {
     
     /**
      * 
-     * @param ed
      * @param jl 
      */
     public void Atualizar(JListCustom jl) {

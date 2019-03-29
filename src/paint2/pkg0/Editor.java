@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package paint2.pkg0;
 
 import java.io.EOFException;
@@ -24,7 +19,6 @@ public class Editor {
     private ArrayList<Forma> formas;
     private ArrayList<Forma> formasBackup;
     private DefaultListModel formasJL;
-    private int idSelecionado;
     private static Editor instance;
     
     private Editor() {
@@ -41,31 +35,19 @@ public class Editor {
     
     /**
      * 
-     * @param i 
-     */
-    public void setId(int i) {
-        idSelecionado = i;
-    }
-    
-    public int getForma() {
-        return idSelecionado;
-    }
-    
-    /**
-     * 
      * @param forma 
      */
     public void adicionarForma(Forma forma) {
-        formas.add(forma);
-        atualizarFormasJL();
+        formas.set(formas.size() - 1, forma);
+        atualizarFormasJL(); //Fix retangulo null
     }
-    
+
     /**
      * 
      */
-    public void removerForma() {
-        formasBackup.add(formas.get(idSelecionado));
-        formas.remove(idSelecionado);
+    public void removerForma(int i) {
+        formasBackup.add(formas.get(i));
+        formas.remove(i);
         atualizarFormasJL();
     }
     
@@ -82,11 +64,11 @@ public class Editor {
     /**
      * 
      */
-    private void atualizarFormasJL() {
+    public void atualizarFormasJL() {
         formasJL.clear();
-        formas.forEach((forma) -> {
-            formasJL.addElement(forma);
-        });
+        for (Forma forma : formas) {
+            formasJL.add(0, forma);
+        }
     }
     
     /**
@@ -116,7 +98,7 @@ public class Editor {
         ObjectOutputStream oos = new ObjectOutputStream(fos);
         for (Forma forma : formas) {
             oos.writeObject(forma);
-        }
+        }   
         oos.flush();
     }
     
@@ -132,7 +114,7 @@ public class Editor {
         formasBackup.clear();
         
         FileInputStream fis = new FileInputStream(arquivo);
-        ObjectInputStream ois = new ObjectInputStream(fis);     
+        ObjectInputStream ois = new ObjectInputStream(fis);
         
         try {
             while (true) {

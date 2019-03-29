@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package paint2.pkg0;
 
 import java.awt.Color;
@@ -28,5 +23,12 @@ public class Retangulo extends Forma {
     public boolean noLimite(int x, int y) {
         return x > this.x && x < this.x + largura &&
                y > this.y && y < this.y + altura;
+    }
+    
+    @Override
+    public String toString() {
+        if (largura == altura)
+            return "Quadrado" + " " + getCorString("m");
+        return "Retângulo" + " " + getCorString("m");  
     }
 }

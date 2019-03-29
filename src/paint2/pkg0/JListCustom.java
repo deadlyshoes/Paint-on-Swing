@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package paint2.pkg0;
 
 import java.util.ArrayList;
@@ -19,11 +14,7 @@ public class JListCustom<Forma> extends JList {
     DefaultListModel listModel;
     ArrayList<Forma> formas;
     
-    /**
-     * 
-     * @param ed 
-     */
-    public void Atualizar() {
+    public JListCustom() {
         formas = (ArrayList<Forma>) Editor.getEditor().getFormas();
         listModel = Editor.getEditor().getFormasJL();
         setModel(listModel);
@@ -42,7 +33,7 @@ public class JListCustom<Forma> extends JList {
             formas.add(i - 1, itemSelecionado);
             listModel.clear();
             formas.forEach((forma) -> {
-                listModel.addElement(forma);
+                listModel.add(0, forma);
             });
             setSelectedIndex(i - 1);
             return true;
@@ -63,7 +54,7 @@ public class JListCustom<Forma> extends JList {
             formas.add(i + 1, itemSelecionado);
             listModel.clear();
             formas.forEach((forma) -> {
-                listModel.addElement(forma);
+                listModel.add(0, forma);
             });
             setSelectedIndex(i + 1);
             return true;

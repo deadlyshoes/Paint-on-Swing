@@ -10,8 +10,7 @@ import java.awt.Graphics;
 
 /**
  *
- * @author João Neto
- * @author José Ilmar
+ * @author ilmar
  */
 public class Elipse extends Forma {
     /**
@@ -49,5 +48,12 @@ public class Elipse extends Forma {
         double pontoY = (altura / 2) * Math.sqrt(1 - ((4 * (x - centroX) * (x - centroX)) / (float) (largura * largura)));
         return (x > this.x && x < this.x + largura &&
                 y > centroY - pontoY && y < centroY + pontoY);
+    }
+    
+    @Override
+    public String toString() {
+        if (largura == altura)
+            return "Circunferência" + " " + getCorString("f");
+        return "Elipse" + " " + getCorString("f");
     }
 }

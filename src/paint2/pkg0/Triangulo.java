@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package paint2.pkg0;
 
 import java.awt.Color;
@@ -49,13 +44,14 @@ public class Triangulo extends Forma{
     public boolean noLimite(int x, int y) {
         double y1Max = (-1*altura*2/ (float) largura)*x + this.y + altura + this.x*2*altura/ (float) largura;
         double y2Max = (altura*2/ (float) largura)*x + this.y - altura + -1*(this.x*2*altura/ (float) largura);
-        System.out.println(y1Max);
-        System.out.println(y2Max);
-        System.out.println(y);
         return (x > this.x && x <= this.x + largura / 2 &&
                 y > y1Max && y < this.y + altura) ||
                (x > this.x + largura / 2 && x < this.x + largura
-                && y > y2Max && y < this.y + altura);
+                && y > y2Max && y < this.y + altura);    
     }
     
+    @Override
+    public String toString() {
+        return "Triângulo equilátero" + " " + getCorString("m");  
+    }
 }

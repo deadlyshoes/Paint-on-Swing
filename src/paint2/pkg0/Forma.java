@@ -1,9 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package paint2.pkg0;
+
+/**
+ *
+ * @author ilmar
+ */
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -12,7 +12,6 @@ import java.io.Serializable;
 /**
  *
  * @author João Neto
- * @author José Ilmar
  */
 public abstract class Forma implements Serializable {
     protected int x;
@@ -109,12 +108,32 @@ public abstract class Forma implements Serializable {
         return altura;
     }
 
+    public Color getCor() {
+        return cor;
+    }
+    
     /**
      * 
      * @return 
      */
-    public Color getCor() {
-        return cor;
+    public String getCorString(String genero) {
+        String sufix;
+        if (genero == "m")
+            sufix = "o";
+        else
+            sufix = "a";
+        if (cor == Color.BLACK) return "pret" + sufix;
+        if (cor == Color.BLUE) return "azul";
+        if (cor == Color.CYAN) return "ciano";
+        if (cor == Color.GRAY) return "cinza";
+        if (cor == Color.GREEN) return "verde";
+        if (cor == Color.LIGHT_GRAY) return "cinza claro";
+        if (cor == Color.MAGENTA) return "magenta";
+        if (cor == Color.ORANGE) return "laranja";
+        if (cor == Color.PINK) return "rosa";
+        if (cor == Color.RED) return "vermelh" + sufix;
+        if (cor == Color.WHITE) return "branc" + sufix;
+        return "amarel" + sufix;
     }
     
     /**
