@@ -66,6 +66,7 @@ public class Tela extends javax.swing.JFrame {
         jToggleButton22 = new javax.swing.JToggleButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -328,6 +329,14 @@ public class Tela extends javax.swing.JFrame {
 
         jMenu1.setText("Arquivo");
 
+        jMenuItem4.setText("Novo");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem4);
+
         jMenuItem2.setText("Abrir");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -562,6 +571,7 @@ public class Tela extends javax.swing.JFrame {
     }//GEN-LAST:event_jToggleButton14ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        salvarAntes(evt);
         dispose();
         System.exit(0);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
@@ -600,14 +610,17 @@ public class Tela extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        if (Editor.getEditor().getFormas().size() > 0) {
-            int resposta = JOptionPane.showConfirmDialog (null, "O painel foi modificado, gostaria de salvar as suas mudanças antes?","Aviso", JOptionPane.YES_NO_OPTION);
+    private void salvarAntes(java.awt.event.ActionEvent evt) {
+        if (Editor.getEditor().getFormas().size() > 0 && !Editor.getEditor().getStatusSalvo()) {
+            int resposta = JOptionPane.showConfirmDialog (null, "O painel foi modificado, gostaria de salvar?","Aviso", JOptionPane.YES_NO_OPTION);
             if (resposta == JOptionPane.YES_OPTION) {
                 jMenuItem3ActionPerformed(evt);
             }
         }
-        
+    }
+    
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        salvarAntes(evt);
         JFileChooser fileChooser = new JFileChooser();
         int returnVal = fileChooser.showOpenDialog(fileChooser);
         if (returnVal == JFileChooser.APPROVE_OPTION) {
@@ -619,6 +632,7 @@ public class Tela extends javax.swing.JFrame {
             } catch (IOException | ClassNotFoundException ex) {
                 Logger.getLogger(Tela.class.getName()).log(Level.SEVERE, null, ex);
             }
+            painel1.setId(-1);
             painel1.repaint();
         }
     }//GEN-LAST:event_jMenuItem2ActionPerformed
@@ -658,6 +672,11 @@ public class Tela extends javax.swing.JFrame {
     private void jToggleButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton22ActionPerformed
         painel1.mudarForma("Quadrado");
     }//GEN-LAST:event_jToggleButton22ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        salvarAntes(evt);
+        painel1.Limpar();
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -708,6 +727,7 @@ public class Tela extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton10;

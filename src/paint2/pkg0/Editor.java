@@ -19,12 +19,14 @@ public class Editor {
     private ArrayList<Forma> formas;
     private ArrayList<Forma> formasBackup;
     private DefaultListModel formasJL;
+    private boolean salvo; //Alguma mudança nas formasJL torna essa flag false
     private static Editor instance;
     
     private Editor() {
         formas = new ArrayList();
         formasBackup = new ArrayList();
         formasJL = new DefaultListModel();
+        salvo = false;
     }
     
     public static Editor getEditor() {
@@ -46,9 +48,11 @@ public class Editor {
      * 
      */
     public void removerForma(int i) {
-        formasBackup.add(formas.get(i));
-        formas.remove(i);
-        atualizarFormasJL();
+        try {
+            formasBackup.add(formas.get(i));
+            formas.remove(i);
+            atualizarFormasJL();
+        } catch (IndexOutOfBoundsException ex) {}
     }
     
     /**
@@ -69,6 +73,13 @@ public class Editor {
         for (Forma forma : formas) {
             formasJL.add(0, forma);
         }
+        salvo = false;
+    }
+    
+    public void limparFormas() {
+        formas.clear();
+        formasBackup.clear();
+        atualizarFormasJL();
     }
     
     /**
@@ -87,6 +98,14 @@ public class Editor {
         return formasJL;
     }
     
+    public void setStatusSalvo(boolean s) {
+        salvo = s;
+    }
+    
+    public boolean getStatusSalvo() {
+        return salvo;
+    }
+    
     /**
      * 
      * @param arquivo
@@ -100,6 +119,7 @@ public class Editor {
             oos.writeObject(forma);
         }   
         oos.flush();
+        salvo = true;
     }
     
     /**
@@ -110,8 +130,7 @@ public class Editor {
      * @throws ClassNotFoundException 
      */
     public void Carregar(String arquivo) throws FileNotFoundException, IOException, ClassNotFoundException {
-        formas.clear();
-        formasBackup.clear();
+        limparFormas();
         
         FileInputStream fis = new FileInputStream(arquivo);
         ObjectInputStream ois = new ObjectInputStream(fis);
@@ -121,6 +140,8 @@ public class Editor {
                 formas.add((Forma) ois.readObject());
             }
         } catch (EOFException err) {
+            atualizarFormasJL();
+            salvo = true;
         } finally { ois.close(); }
     }
 }

@@ -61,19 +61,24 @@ public class Painel extends JPanel {
                             }
                         }   break;
                     case "Redimensionar":
-                        Forma fSelec = editor.getFormas().get(idSelecionado);
-                        if (x < fSelec.getX() && x > fSelec.getX() - 10) {
-                            mouseCoords[0] = true;
-                        }
-                        else if (x > fSelec.getX() + fSelec.getLargura()
-                                && x < fSelec.getX() + fSelec.getLargura() + 10) {
-                            mouseCoords[1] = true;
-                        }   if (y < fSelec.getY() && y > fSelec.getY() - 10) {
-                            mouseCoords[2] = true;
-                        }   if (y > fSelec.getY() + fSelec.getAltura()
+                        try {
+                            Forma fSelec = editor.getFormas().get(idSelecionado);
+                            if (x < fSelec.getX() && x > fSelec.getX() - 10) {
+                                mouseCoords[0] = true;
+                            }
+                            else if (x > fSelec.getX() + fSelec.getLargura()
+                                     && x < fSelec.getX() + fSelec.getLargura() + 10) {
+                                mouseCoords[1] = true;
+                            }   
+                            if (y < fSelec.getY() && y > fSelec.getY() - 10) {
+                                mouseCoords[2] = true;
+                            }
+                            if (y > fSelec.getY() + fSelec.getAltura()
                                 && y < fSelec.getY() + fSelec.getAltura() + 10) {
-                            mouseCoords[3] = true;
-                        }   break;
+                                mouseCoords[3] = true;
+                            }   
+                        } catch (IndexOutOfBoundsException ex) {
+                        } finally { break; }
                     default:
                         break;
                 }
@@ -137,7 +142,7 @@ public class Painel extends JPanel {
                         }   editor.adicionarForma(formaNova);
                         break;
                     case "Mover":
-                        {
+                        try {
                             Forma fSelec = editor.getFormas().get(idSelecionado);
                             fSelec.setX(
                                     fSelec.getX() + (e.getX() - x));
@@ -145,10 +150,12 @@ public class Painel extends JPanel {
                                     fSelec.getY() + (e.getY() - y));
                             x = e.getX();
                             y = e.getY();
+                            editor.setStatusSalvo(false); 
                             break;
-                        }
+                        } catch (IndexOutOfBoundsException ex) {
+                        } finally { break; }
                     case "Redimensionar":
-                        {
+                        try {
                             Forma fSelec = editor.getFormas().get(idSelecionado);
                             if (mouseCoords[0] == true && x < fSelec.getX()) {
                                 fSelec.setX(fSelec.getX() + (e.getX() - x));
@@ -164,8 +171,10 @@ public class Painel extends JPanel {
                                 fSelec.setAltura(fSelec.getAltura() + (e.getY() - y));
                             }       x = e.getX();
                             y = e.getY();
+                            editor.setStatusSalvo(false);
                             break;
-                        }
+                        } catch (IndexOutOfBoundsException ex) {
+                        } finally { break; }
                     default:
                         break;
                 }
@@ -225,6 +234,12 @@ public class Painel extends JPanel {
      */
     public void Desfazer() {
         editor.restaurarForma();
+        repaint();
+    }
+    
+    public void Limpar() {
+        editor.limparFormas();
+        idSelecionado = -1;
         repaint();
     }
     
