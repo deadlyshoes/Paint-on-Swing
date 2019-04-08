@@ -1,10 +1,5 @@
 package paint2.pkg0;
 
-/**
- *
- * @author ilmar
- */
-
 import java.awt.Color;
 import java.awt.Graphics;
 import java.io.Serializable;
@@ -12,6 +7,7 @@ import java.io.Serializable;
 /**
  *
  * @author João Neto
+ * @author José Ilmar
  */
 public abstract class Forma implements Serializable {
     protected int x;
@@ -22,11 +18,11 @@ public abstract class Forma implements Serializable {
     
     /**
      * 
-     * @param x
-     * @param y
-     * @param largura
-     * @param altura
-     * @param cor 
+     * @param x coordenada x da origem da forma
+     * @param y coordenada y da origem da forma
+     * @param largura largura da forma
+     * @param altura altura da forma
+     * @param cor cor da forma 
      */
     public Forma(int x, int y, int largura, int altura, Color cor) {
         this.x = x;
@@ -38,7 +34,7 @@ public abstract class Forma implements Serializable {
 
     /**
      * 
-     * @param x 
+     * @param x novo x da origem
      */
     public void setX(int x) {
         this.x = x;
@@ -46,7 +42,7 @@ public abstract class Forma implements Serializable {
 
     /**
      * 
-     * @param y 
+     * @param y novo y da origem
      */
     public void setY(int y) {
         this.y = y;
@@ -54,7 +50,7 @@ public abstract class Forma implements Serializable {
 
     /**
      * 
-     * @param largura 
+     * @param largura nova largura
      */
     public void setLargura(int largura) {
         this.largura = largura;
@@ -62,7 +58,7 @@ public abstract class Forma implements Serializable {
 
     /**
      * 
-     * @param altura 
+     * @param altura nova altura
      */
     public void setAltura(int altura) {
         this.altura = altura;
@@ -70,7 +66,7 @@ public abstract class Forma implements Serializable {
 
     /**
      * 
-     * @param cor 
+     * @param cor nova cor
      */
     public void setCor(Color cor) {
         this.cor = cor;
@@ -78,7 +74,7 @@ public abstract class Forma implements Serializable {
     
     /**
      * 
-     * @return 
+     * @return x da origem
      */
     public int getX() {
         return x;
@@ -86,7 +82,7 @@ public abstract class Forma implements Serializable {
 
     /**
      * 
-     * @return 
+     * @return y da origem
      */
     public int getY() {
         return y;
@@ -94,7 +90,7 @@ public abstract class Forma implements Serializable {
 
     /**
      * 
-     * @return 
+     * @return largura
      */
     public int getLargura() {
         return largura;
@@ -102,7 +98,7 @@ public abstract class Forma implements Serializable {
 
     /**
      * 
-     * @return 
+     * @return altura
      */
     public int getAltura() {
         return altura;
@@ -114,7 +110,7 @@ public abstract class Forma implements Serializable {
     
     /**
      * 
-     * @return 
+     * @return cor da classe Colors em uma String com o nome da cor
      */
     public String getCorString(String genero) {
         String sufix;
@@ -144,9 +140,9 @@ public abstract class Forma implements Serializable {
 
     /**
      *
-     * @param x
-     * @param y
-     * @return
+     * @param x coordenada x a ser analisada
+     * @param y coordenada y a ser analisada
+     * @return True se o valor de x e y estão dentro da forma e False caso contário
      */
     public abstract boolean noLimite(int x, int y);
 }

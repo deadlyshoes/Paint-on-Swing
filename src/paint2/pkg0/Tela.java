@@ -75,7 +75,7 @@ public class Tela extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         buttonGroup1.add(jToggleButton1);
-        jToggleButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paint2/pkg0/icons8-caixa-de-seleção-desmarcada-24.png"))); // NOI18N
+        jToggleButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paint2/pkg0/cor-preta.png"))); // NOI18N
         jToggleButton1.setSelected(true);
         jToggleButton1.setToolTipText("Preto");
         jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -85,7 +85,7 @@ public class Tela extends javax.swing.JFrame {
         });
 
         buttonGroup1.add(jToggleButton2);
-        jToggleButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paint2/pkg0/icons8-caixa-de-seleção-desmarcada-24 (1).png"))); // NOI18N
+        jToggleButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paint2/pkg0/cor-azul.png"))); // NOI18N
         jToggleButton2.setToolTipText("Azul");
         jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,7 +94,7 @@ public class Tela extends javax.swing.JFrame {
         });
 
         buttonGroup1.add(jToggleButton3);
-        jToggleButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paint2/pkg0/icons8-caixa-de-seleção-desmarcada-24 (2)333.png"))); // NOI18N
+        jToggleButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paint2/pkg0/cor-ciano.png"))); // NOI18N
         jToggleButton3.setToolTipText("Ciano");
         jToggleButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,7 +103,7 @@ public class Tela extends javax.swing.JFrame {
         });
 
         buttonGroup1.add(jToggleButton4);
-        jToggleButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paint2/pkg0/icons8-caixa-de-seleção-desmarcada-24 (3)333.png"))); // NOI18N
+        jToggleButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paint2/pkg0/cor-cinza.png"))); // NOI18N
         jToggleButton4.setToolTipText("Cinza");
         jToggleButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -112,7 +112,7 @@ public class Tela extends javax.swing.JFrame {
         });
 
         buttonGroup1.add(jToggleButton5);
-        jToggleButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paint2/pkg0/icons8-caixa-de-seleção-desmarcada-24 (2).png"))); // NOI18N
+        jToggleButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paint2/pkg0/cor-verde.png"))); // NOI18N
         jToggleButton5.setToolTipText("Verde");
         jToggleButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,7 +121,7 @@ public class Tela extends javax.swing.JFrame {
         });
 
         buttonGroup1.add(jToggleButton6);
-        jToggleButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paint2/pkg0/icons8-caixa-de-seleção-desmarcada-24 (3).png"))); // NOI18N
+        jToggleButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paint2/pkg0/cor-cinza_claro.png"))); // NOI18N
         jToggleButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton6ActionPerformed(evt);
@@ -129,7 +129,7 @@ public class Tela extends javax.swing.JFrame {
         });
 
         buttonGroup1.add(jToggleButton7);
-        jToggleButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paint2/pkg0/icons8-caixa-de-seleção-desmarcada-24 (4).png"))); // NOI18N
+        jToggleButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paint2/pkg0/cor-magenta.png"))); // NOI18N
         jToggleButton7.setToolTipText("Magenta");
         jToggleButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -138,7 +138,7 @@ public class Tela extends javax.swing.JFrame {
         });
 
         buttonGroup1.add(jToggleButton8);
-        jToggleButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paint2/pkg0/icons8-caixa-de-seleção-desmarcada-24 (5).png"))); // NOI18N
+        jToggleButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paint2/pkg0/cor-laranja.png"))); // NOI18N
         jToggleButton8.setToolTipText("Laranja");
         jToggleButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -156,7 +156,7 @@ public class Tela extends javax.swing.JFrame {
         });
 
         buttonGroup1.add(jToggleButton10);
-        jToggleButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paint2/pkg0/icons8-caixa-de-seleção-desmarcada-24 (7).png"))); // NOI18N
+        jToggleButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paint2/pkg0/cor-vermelha.png"))); // NOI18N
         jToggleButton10.setToolTipText("Vermelho");
         jToggleButton10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -165,7 +165,7 @@ public class Tela extends javax.swing.JFrame {
         });
 
         buttonGroup1.add(jToggleButton11);
-        jToggleButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paint2/pkg0/icons8-caixa-de-seleção-desmarcada-24 (8).png"))); // NOI18N
+        jToggleButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paint2/pkg0/cor-branca.png"))); // NOI18N
         jToggleButton11.setToolTipText("Branco");
         jToggleButton11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -174,7 +174,7 @@ public class Tela extends javax.swing.JFrame {
         });
 
         buttonGroup1.add(jToggleButton12);
-        jToggleButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paint2/pkg0/icons8-caixa-de-seleção-desmarcada-24 (9).png"))); // NOI18N
+        jToggleButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paint2/pkg0/cor-amarela.png"))); // NOI18N
         jToggleButton12.setToolTipText("Amarelo");
         jToggleButton12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -222,7 +222,7 @@ public class Tela extends javax.swing.JFrame {
         });
 
         buttonGroup3.add(jToggleButton16);
-        jToggleButton16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paint2/pkg0/icons8-retângulo-48.png"))); // NOI18N
+        jToggleButton16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paint2/pkg0/retangulo.png"))); // NOI18N
         jToggleButton16.setSelected(true);
         jToggleButton16.setToolTipText("Retângulo");
         jToggleButton16.addActionListener(new java.awt.event.ActionListener() {
@@ -240,7 +240,7 @@ public class Tela extends javax.swing.JFrame {
         });
 
         buttonGroup3.add(jToggleButton18);
-        jToggleButton18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paint2/pkg0/ellipse_filled-48_45529.png"))); // NOI18N
+        jToggleButton18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paint2/pkg0/elipse.png"))); // NOI18N
         jToggleButton18.setToolTipText("Elipse");
         jToggleButton18.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -285,7 +285,7 @@ public class Tela extends javax.swing.JFrame {
         );
 
         buttonGroup3.add(jToggleButton19);
-        jToggleButton19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paint2/pkg0/dark-triangle_icon-icons.com_54020.png"))); // NOI18N
+        jToggleButton19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paint2/pkg0/triangulo_eq.png"))); // NOI18N
         jToggleButton19.setToolTipText("Triãngulo equilátero");
         jToggleButton19.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -294,7 +294,7 @@ public class Tela extends javax.swing.JFrame {
         });
 
         buttonGroup3.add(jToggleButton20);
-        jToggleButton20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paint2/pkg0/filled-circle_icon-icons.com_72757.png"))); // NOI18N
+        jToggleButton20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paint2/pkg0/circunferencia.png"))); // NOI18N
         jToggleButton20.setToolTipText("Circunferência");
         jToggleButton20.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -310,7 +310,7 @@ public class Tela extends javax.swing.JFrame {
         });
 
         buttonGroup3.add(jToggleButton21);
-        jToggleButton21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paint2/pkg0/sidetriangle_89207.png"))); // NOI18N
+        jToggleButton21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paint2/pkg0/triangulo_ret.png"))); // NOI18N
         jToggleButton21.setToolTipText("Triângulo retângulo");
         jToggleButton21.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -319,7 +319,7 @@ public class Tela extends javax.swing.JFrame {
         });
 
         buttonGroup3.add(jToggleButton22);
-        jToggleButton22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paint2/pkg0/square-shape-shadow_icon-icons.com_73397.png"))); // NOI18N
+        jToggleButton22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paint2/pkg0/quadrado.png"))); // NOI18N
         jToggleButton22.setToolTipText("Quadrado");
         jToggleButton22.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -378,21 +378,16 @@ public class Tela extends javax.swing.JFrame {
                         .addGap(2, 2, 2)
                         .addComponent(painel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jToggleButton18, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jToggleButton22, javax.swing.GroupLayout.PREFERRED_SIZE, 50, Short.MAX_VALUE)
-                                    .addComponent(jToggleButton21, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                                .addComponent(jToggleButton20, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(jToggleButton19, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jToggleButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jToggleButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jToggleButton22, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jToggleButton18, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jToggleButton20, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jToggleButton21, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jToggleButton19, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jToggleButton13)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -407,7 +402,7 @@ public class Tela extends javax.swing.JFrame {
                         .addComponent(jToggleButton17)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton3)
-                        .addGap(0, 317, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(83, 83, 83)
@@ -437,43 +432,42 @@ public class Tela extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jToggleButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(14, 14, 14))
+                .addGap(2, 2, 2))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(9, 9, 9)
+                        .addGap(3, 3, 3)
                         .addComponent(jButton5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(2, 2, 2)
                         .addComponent(jButton4)
-                        .addGap(8, 8, 8)
-                        .addComponent(jToggleButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jToggleButton18)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jToggleButton20)
+                        .addComponent(jToggleButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jToggleButton22)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jToggleButton18, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jToggleButton20, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jToggleButton21)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jToggleButton19)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(jToggleButton19))
                     .addComponent(painel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(16, 16, 16)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jToggleButton13)
-                    .addComponent(jToggleButton14)
-                    .addComponent(jToggleButton15)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
+                    .addComponent(jButton3)
                     .addComponent(jToggleButton17)
-                    .addComponent(jButton3))
-                .addGap(34, 34, 34))
+                    .addComponent(jButton2)
+                    .addComponent(jButton1)
+                    .addComponent(jToggleButton15)
+                    .addComponent(jToggleButton14)
+                    .addComponent(jToggleButton13))
+                .addGap(24, 24, 24))
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 337, Short.MAX_VALUE)
+                .addComponent(jScrollPane1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -491,10 +485,10 @@ public class Tela extends javax.swing.JFrame {
                             .addComponent(jToggleButton2)
                             .addComponent(jToggleButton7)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jToggleButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jToggleButton5))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jToggleButton6)
@@ -621,6 +615,7 @@ public class Tela extends javax.swing.JFrame {
     
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         salvarAntes(evt);
+        
         JFileChooser fileChooser = new JFileChooser();
         int returnVal = fileChooser.showOpenDialog(fileChooser);
         if (returnVal == JFileChooser.APPROVE_OPTION) {

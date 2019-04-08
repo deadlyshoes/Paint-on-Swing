@@ -10,7 +10,8 @@ import java.awt.Graphics;
 
 /**
  *
- * @author ilmar
+ * @author João Neto
+ * @author José Ilmar
  */
 public class Elipse extends Forma {
     /**

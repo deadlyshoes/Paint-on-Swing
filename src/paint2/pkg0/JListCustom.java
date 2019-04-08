@@ -15,6 +15,8 @@ public class JListCustom<Forma> extends JList {
     ArrayList<Forma> formas;
     
     public JListCustom() {
+        //Há eventos de mouse, mas eles estão na classe Tela
+        //A razão é a necessidade do painel
         formas = (ArrayList<Forma>) Editor.getEditor().getFormas();
         listModel = Editor.getEditor().getFormasJL();
         setModel(listModel);
@@ -22,7 +24,7 @@ public class JListCustom<Forma> extends JList {
     
     /**
      * 
-     * @return 
+     * @return Retorna se a forma foi movida para cima
      */
     public boolean moverCima() {
         try {
@@ -46,7 +48,7 @@ public class JListCustom<Forma> extends JList {
     
     /**
      * 
-     * @return 
+     * @return Retorna se a forma foi movida para baixo
      */
     public boolean moverBaixo() {   
         try {

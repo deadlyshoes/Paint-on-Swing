@@ -1,11 +1,5 @@
 package paint2.pkg0;
 
-/**
- *
- * @author João Neto
- * @author José Ilmar
- */
-
 import javax.swing.JPanel;
 import java.awt.Graphics;
 import java.awt.Color;
@@ -13,6 +7,12 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
         
+/**
+ *
+ * @author João Neto
+ * @author José Ilmar
+ */
+
 public class Painel extends JPanel {
     private Editor editor;
     private JListCustom jl;
@@ -31,13 +31,13 @@ public class Painel extends JPanel {
     private boolean[] mouseCoords;
     
     /**
-     * 
+     * Eventos de clique e a instanciação das variáveis
      */
     public Painel() {
         editor = Editor.getEditor();
-        tipoForma = "Retangulo";
-        tool = "Desenhar";
-        idSelecionado = -1;
+        tipoForma = "Retangulo"; //A forma inicial é o retângulo
+        tool = "Desenhar"; //A ferramenta inicial é Desenhar
+        idSelecionado = -1; //Inicialmente, não deve haver nenhuma forma selecionada
         mouseCoords = new boolean[4]; //Leste, Oeste, Norte e Sul
         addMouseListener(new MouseAdapter() {
             @Override
@@ -46,21 +46,26 @@ public class Painel extends JPanel {
                 y = e.getY();
                 switch (tool) {
                     case "Desenhar":
+                        //Adiciona um retângulo sem dimensão e cor e muda para nenhuma forma selecionada
                         editor.getFormas().add(new Retangulo(0, 0, 0, 0, null)); //Dummy
                         idSelecionado = -1;
                         break;
                     case "Selecionar":
+                        //Muda para nenhuma forma selecionada e seleciona a que está nos limites
+                        //A prioridade será a que vem por último, i. e., a última forma desenhada
                         idSelecionado = -1;
                         repaint();
                         for (int i = editor.getFormas().size() - 1; i >= 0; i--) {
                             if (regiaoOcupada(editor.getFormas().get(i), x, y)) {
                                 idSelecionado = i;
-                                jl.setSelectedIndex(i);
+                                jl.setSelectedIndex(i); //Seleciona na JList
                                 repaint();
                                 break;
                             }
                         }   break;
                     case "Redimensionar":
+                        //Detecta a coordenada do clique
+                        //Norte, Sul, Leste ou Oeste, sendo possível até duas coordenadas 
                         try {
                             Forma fSelec = editor.getFormas().get(idSelecionado);
                             if (x < fSelec.getX() && x > fSelec.getX() - 10) {
@@ -89,6 +94,10 @@ public class Painel extends JPanel {
             public void mouseDragged(MouseEvent e) {
                 switch (tool) {
                     case "Desenhar":
+                        //O menor x e o menor y serão a origem da forma
+                        //As final serão dadas pela soma com a largura e com a altura
+                        //A circunferência e o quadrado são casos especiais de
+                        //elipse e retângulo, respectivamente
                         int tmpX = Math.min(x, e.getX());
                         int tmpY = Math.min(y, e.getY());
                         largura = Math.abs(x - e.getX());
@@ -142,6 +151,7 @@ public class Painel extends JPanel {
                         }   editor.adicionarForma(formaNova);
                         break;
                     case "Mover":
+                        //Muda a origem da formas
                         try {
                             Forma fSelec = editor.getFormas().get(idSelecionado);
                             fSelec.setX(
@@ -155,6 +165,8 @@ public class Painel extends JPanel {
                         } catch (IndexOutOfBoundsException ex) {
                         } finally { break; }
                     case "Redimensionar":
+                        //Muda a origem, a largura ou a altura de acordo com as coordenadas
+                        //no evento de clique
                         try {
                             Forma fSelec = editor.getFormas().get(idSelecionado);
                             if (mouseCoords[0] == true && x < fSelec.getX()) {
@@ -184,6 +196,7 @@ public class Painel extends JPanel {
         addMouseListener(new MouseAdapter() {
             @Override
             public void mouseReleased(MouseEvent e) {
+                //Resetar as coordenadas do redimensionar
                 if (tool == "Redimensionar")
                     mouseCoords = new boolean[4];
             }
@@ -192,7 +205,7 @@ public class Painel extends JPanel {
     
     /**
      * 
-     * @param i 
+     * @param i id da cor no array de cores
      */
     public void mudarCor(int i) {
        idCor = i;
@@ -206,7 +219,7 @@ public class Painel extends JPanel {
     
     /**
      * 
-     * @param f 
+     * @param f tipo da forma a ser desenhada a partir do momento
      */
     public void mudarForma(String f) {
         tipoForma = f;
@@ -214,7 +227,7 @@ public class Painel extends JPanel {
     
     /**
      * 
-     * @param t
+     * @param t nome da forma a ser adotada
      */
     public void mudarTool(String t) {
         tool = t;
@@ -245,10 +258,10 @@ public class Painel extends JPanel {
     
     /**
      * 
-     * @param f
-     * @param x
-     * @param y
-     * @return 
+     * @param f forma que será analizada
+     * @param x coordenada x do clique
+     * @param y coordenada y do clique
+     * @return um booleano que indica se o clique está dentro(True) ou não(False)
      */
     public boolean regiaoOcupada(Forma f, int x, int y) {
         return f.noLimite(x, y);
@@ -256,7 +269,7 @@ public class Painel extends JPanel {
     
     /**
      * 
-     * @param id 
+     * @param id utilizado na mudança da forma selecionada
      */
     public void setId(int id) {
         idSelecionado = id;
@@ -264,7 +277,7 @@ public class Painel extends JPanel {
     
     /**
      * 
-     * @return 
+     * @return id no array da forma selecionada
      */
     public int getId() {
         return idSelecionado;
@@ -293,7 +306,7 @@ public class Painel extends JPanel {
     
     /**
      * 
-     * @param jl 
+     * @param jl JList necessária para a ferramenta selecionar
      */
     public void Atualizar(JListCustom jl) {
         this.jl = jl;

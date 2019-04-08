@@ -20,7 +20,7 @@ public class Editor {
     private ArrayList<Forma> formasBackup;
     private DefaultListModel formasJL;
     private boolean salvo; //Alguma mudança nas formasJL torna essa flag false
-    private static Editor instance;
+    private static Editor instance; //Há apenas um editor
     
     private Editor() {
         formas = new ArrayList();
@@ -37,7 +37,7 @@ public class Editor {
     
     /**
      * 
-     * @param forma 
+     * @param forma uma forma qualquer
      */
     public void adicionarForma(Forma forma) {
         formas.set(formas.size() - 1, forma);
@@ -45,7 +45,8 @@ public class Editor {
     }
 
     /**
-     * 
+     * tira de formas e adiciona em formasBackup
+     * @param i id no array da forma a ser removida
      */
     public void removerForma(int i) {
         try {
@@ -56,7 +57,7 @@ public class Editor {
     }
     
     /**
-     * 
+     * o inverso de removerForma. Tira do de formasBackup e adiciona em formas
      */
     public void restaurarForma() {
         if (formasBackup.size() > 0) {
@@ -66,7 +67,7 @@ public class Editor {
     }
     
     /**
-     * 
+     * limpa tudo e lê as formas
      */
     public void atualizarFormasJL() {
         formasJL.clear();
@@ -84,7 +85,7 @@ public class Editor {
     
     /**
      * 
-     * @return 
+     * @return array de formas
      */
     public ArrayList<Forma> getFormas() {
         return formas;
@@ -92,7 +93,7 @@ public class Editor {
     
     /**
      * 
-     * @return 
+     * @return listmodel de formas
      */
     public DefaultListModel getFormasJL() {
         return formasJL;
@@ -108,7 +109,7 @@ public class Editor {
     
     /**
      * 
-     * @param arquivo
+     * @param arquivo a ser salvo
      * @throws FileNotFoundException
      * @throws IOException 
      */
@@ -124,13 +125,16 @@ public class Editor {
     
     /**
      * 
-     * @param arquivo
+     * @param arquivo a ser lido
      * @throws FileNotFoundException
      * @throws IOException
      * @throws ClassNotFoundException 
      */
     public void Carregar(String arquivo) throws FileNotFoundException, IOException, ClassNotFoundException {
-        limparFormas();
+        //limparFormas();
+        //Manter as formas atuais
+        boolean flag = false;
+        if (formas.size() > 0) flag = true;
         
         FileInputStream fis = new FileInputStream(arquivo);
         ObjectInputStream ois = new ObjectInputStream(fis);
@@ -142,6 +146,7 @@ public class Editor {
         } catch (EOFException err) {
             atualizarFormasJL();
             salvo = true;
+            if (flag == true) salvo = false;
         } finally { ois.close(); }
     }
 }
